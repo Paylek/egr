@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/inn")
+@RequestMapping("/egr")
 public class EgrController {
     private final EgrConfig egrConfig;
 
@@ -27,13 +27,13 @@ public class EgrController {
         this.egrConfig = egrConfig;
     }
 
-    @GetMapping("/fill/{inn}")
+    @GetMapping("/fill/{egr}")
     public EgrVO fill(
-            @PathVariable String inn
+            @PathVariable String egr
     ) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response1 = restTemplate.getForEntity(egrConfig.getAddressAndDateURL() + "/" + inn, String.class);
-        ResponseEntity<String> response2 = restTemplate.getForEntity(egrConfig.getFullNameAndStatusURL() + "/" + inn, String.class);
+        ResponseEntity<String> response1 = restTemplate.getForEntity(egrConfig.getAddressAndDateURL() + "/" + egr, String.class);
+        ResponseEntity<String> response2 = restTemplate.getForEntity(egrConfig.getFullNameAndStatusURL() + "/" + egr, String.class);
         String address = null;
         LocalDate ld = null;
         String status = null;
