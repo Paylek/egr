@@ -39,6 +39,17 @@
         </div>
     </div>
 
+    <script>
+        const unpInput = document.getElementById('egr');
+
+        unpInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 9) {
+                this.value = this.value.substring(0, 9);
+            }
+        });
+    </script>
+
     <div class="mb-3">
         <label class="form-label" for="fullName">
             Полное наименование плательщика
